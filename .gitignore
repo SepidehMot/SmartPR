@@ -8,3 +8,4 @@ serviceAccountKey.json
 .npm
 backend/node-red/data/serviceAccount.json
 backend/node-red/data/*.backup
+**/passwords
