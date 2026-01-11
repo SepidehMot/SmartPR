@@ -37,3 +37,7 @@ services:
     dockerfilePath: Dockerfile
     plan: starter
     autoDeploy: true
+    disk:
+      name: mosquitto-data
+      mountPath: /mosquitto/data
+      sizeGB: 1
