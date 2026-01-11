@@ -35,5 +35,5 @@ services:
     env: docker
     rootDir: infra
     dockerfilePath: Dockerfile
-    plan: free
+    plan: starter
     autoDeploy: true
