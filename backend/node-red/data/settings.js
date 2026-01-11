@@ -35,6 +35,7 @@ module.exports = {
   },
 
   flowFilePretty: true,
+  uiHost: "0.0.0.0",
   uiPort: process.env.PORT || 1880,
 
   diagnostics: { enabled: true, ui: true },
