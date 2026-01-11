@@ -2,6 +2,7 @@
 set -eu
 
 : "${PORT:=10000}"
+chmod 600 /mosquitto/config/passwords
 cat > /mosquitto/config/mosquitto.conf <<EOF
 persistence true
 persistence_location /mosquitto/data/
