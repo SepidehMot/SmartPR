@@ -1,4 +1,3 @@
-
 const admin = require("firebase-admin");
 
 module.exports = {
@@ -7,10 +6,16 @@ module.exports = {
   functionGlobalContext: {
     firebase_admin: (() => {
       try {
-        //const serviceAccount = require("/data/serviceAccount.json");
-const serviceAccount=process.env.FIREBASE_SERVICE_ACCOUNT;
+        const raw = process.env.FIREBASE_SERVICE_ACCOUNT;
+        if (!raw) {
+          console.error("Missing FIREBASE_SERVICE_ACCOUNT env var");
+          return null;
+        }
+
+        const serviceAccount = JSON.parse(raw);
+
         if (!serviceAccount || !serviceAccount.project_id) {
-          console.error("Invalid service account JSON");
+          console.error("Invalid FIREBASE_SERVICE_ACCOUNT JSON (missing project_id)");
           return null;
         }
 
@@ -20,10 +25,7 @@ const serviceAccount=process.env.FIREBASE_SERVICE_ACCOUNT;
           });
         }
 
-        console.log(
-          "Firebase Admin initialized:",
-          serviceAccount.project_id
-        );
+        console.log("Firebase Admin initialized:", serviceAccount.project_id);
         return admin;
       } catch (err) {
         console.error("Firebase Admin init failed:", err.message);
@@ -33,8 +35,7 @@ const serviceAccount=process.env.FIREBASE_SERVICE_ACCOUNT;
   },
 
   flowFilePretty: true,
-  //for deploy
-   uiPort: process.env.PORT || 1880,
+  uiPort: process.env.PORT || 1880,
 
   diagnostics: { enabled: true, ui: true },
 
