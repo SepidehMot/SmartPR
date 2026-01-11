@@ -7,8 +7,8 @@ module.exports = {
   functionGlobalContext: {
     firebase_admin: (() => {
       try {
-        const serviceAccount = require("/data/serviceAccount.json");
-
+        //const serviceAccount = require("/data/serviceAccount.json");
+const serviceAccount=process.env.FIREBASE_SERVICE_ACCOUNT;
         if (!serviceAccount || !serviceAccount.project_id) {
           console.error("Invalid service account JSON");
           return null;
