@@ -1,0 +1,39 @@
+services:
+  # 1. Frontend (Next.js)
+  - type: web
+    name: smartparking-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    plan: free
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://smartparking-node-red.onrender.com
+
+  # 2. Backend (Node-RED)
+  - type: web
+    name: smartparking-node-red
+    env: node
+    rootDir: backend/node-red
+    buildCommand: "npm install"
+    startCommand: "npx node-red -u ./data -p $PORT"
+    plan: free
+    envVars:
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
+      - key: MQTT_URL
+        value: mqtt://smartparking-mosquitto.onrender.com:1883
+      - key: MQTT_USERNAME
+        sync: false
+      - key: MQTT_PASSWORD
+        sync: false
+
+  # 3. Mosquitto (MQTT broker)
+  - type: web
+    name: smartparking-mosquitto
+    env: docker
+    rootDir: infra
+    dockerfilePath: Dockerfile
+    plan: free
+    autoDeploy: true

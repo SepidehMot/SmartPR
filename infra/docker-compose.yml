@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./passwords:/mosquitto/config/passwords
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+
+  nodered:
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    environment:
+      - TZ=Europe/Rome
+      - MQTT_URL="mqtt://mosquitto:1883"
+      - MQTT_USERNAME=3pid
+      - MQTT_PASSWORD=S112358mo
+
+    volumes:
+      - ../backend/node-red/data:/data
+    depends_on:
+      - mosquitto

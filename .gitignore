@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+*.env
+*.env.*
+serviceAccountKey.json
+# backend/node-red/data/
+#backend/node-red/data/firebase-service-account.json
+.npm
+backend/node-red/data/serviceAccount.json
+backend/node-red/data/*.backup
