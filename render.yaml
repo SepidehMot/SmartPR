@@ -30,7 +30,7 @@ services:
         sync: false
 
   # 3. Mosquitto (MQTT broker)
-  - type: web
+  - type: pserv
     name: smartparking-mosquitto
     env: docker
     rootDir: infra
