@@ -1,6 +1,7 @@
 // Gateway Simulator
-
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+    require("dotenv").config(); 
+}
 const mqtt = require("mqtt");
 
 const url = process.env.MQTT_URL;
