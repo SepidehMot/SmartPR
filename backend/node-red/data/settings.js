@@ -2,7 +2,7 @@ const admin = require("firebase-admin");
 
 module.exports = {
   flowFile: "flows.json",
-
+  credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
   functionGlobalContext: {
     firebase_admin: (() => {
       try {
@@ -15,7 +15,9 @@ module.exports = {
         const serviceAccount = JSON.parse(raw);
 
         if (!serviceAccount || !serviceAccount.project_id) {
-          console.error("Invalid FIREBASE_SERVICE_ACCOUNT JSON (missing project_id)");
+          console.error(
+            "Invalid FIREBASE_SERVICE_ACCOUNT JSON (missing project_id)"
+          );
           return null;
         }
 
