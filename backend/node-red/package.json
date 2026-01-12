@@ -1,13 +1,14 @@
 {
-    "name": "node-red-project",
-    "description": "A Node-RED Project",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "firebase-admin": "^13.4.0",
-        "mqtt": "^5.14.1",
-        "node-red-contrib-plate-recognizer": "^1.0.3",
-        "node-red-dashboard": "~3.6.6",
-        "node-red-node-ui-table": "^0.4.5"
-    }
+  "name": "node-red-project",
+  "description": "A Node-RED Project",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "node-red": "^3.1.0",
+    "firebase-admin": "^13.4.0",
+    "mqtt": "^5.14.1",
+    "node-red-dashboard": "^3.6.6",
+    "node-red-node-ui-table": "^0.4.5",
+    "node-red-contrib-plate-recognizer": "^1.0.3"
+  }
 }
