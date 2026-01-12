@@ -2,7 +2,7 @@ const admin = require("firebase-admin");
 
 module.exports = {
   flowFile: "flows.json",
-  // credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
+  credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
   functionGlobalContext: {
     firebase_admin: (() => {
       try {
