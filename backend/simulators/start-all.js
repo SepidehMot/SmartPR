@@ -21,3 +21,4 @@ configurations.forEach(cfg => {
     });
   });
 });
+console.log("All Simulators Launched and logging to Render console...");
