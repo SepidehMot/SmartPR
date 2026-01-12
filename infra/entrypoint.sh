@@ -7,6 +7,9 @@ cat > /mosquitto/config/mosquitto.conf <<EOF
 persistence true
 persistence_location /mosquitto/data/
 log_dest stdout
+# Only log errors and warnings to filter out health-check protocol noise
+log_type error
+log_type warning
 
 allow_anonymous false
 password_file /mosquitto/config/passwords
